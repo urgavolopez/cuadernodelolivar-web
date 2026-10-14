@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cuaderno del Olivar</title>
+<meta name="description" content="Muy pronto: la app para llevar tu campaña de aceituna en el móvil. Entregas a la cooperativa, anticipos, liquidación, PAC, gastos y jornales.">
+<meta property="og:title" content="Cuaderno del Olivar">
+<meta property="og:description" content="Muy pronto: tu campaña de aceituna, cuadrada en el móvil.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cuadernodelolivar.es/">
+<meta name="theme-color" content="#2F3C18">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Public+Sans:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: página de «muy pronto»: cabecera con el logotipo, bloque a dos columnas (mensaje + móvil con la app) y pie. En móvil, una columna. */
+:root{
+  --bg:#F3F2EA; --surface:#FFFFFF; --ink:#22261A; --muted:#62674F; --line:#DEDCCD;
+  --olive:#4E6427; --olive-deep:#2F3C18; --olive-soft:#E6EBD2; --oil:#9A7414; --oil-soft:#F6EDD2;
+  --leaf:#A5B862; --on-deep:#F4F3E8;
+  --f-display:"Young Serif",Georgia,"Times New Roman",serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#14160E; --surface:#1D2016; --ink:#ECEBDF; --muted:#A7AB93; --line:#343828;
+  --olive:#A5B862; --olive-deep:#1A2210; --olive-soft:#2A311D; --oil:#DDB955; --oil-soft:#3A3219;
+  color-scheme:dark;
+}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font:17px/1.6 var(--f-body)}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding-inline:20px}
+h1{font-family:var(--f-display);font-weight:400;line-height:1.12;text-wrap:balance;margin:14px 0 18px;font-size:clamp(36px,6vw,58px)}
+h1 em{font-style:normal;color:var(--olive)}
+p{margin:0}
+
+header{background:var(--olive-deep);color:var(--on-deep);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;gap:10px;padding-block:14px;font-family:var(--f-display);font-size:21px}
+header svg{width:38px;height:38px;flex:none}
+
+main{flex:1;padding-block:52px 64px}
+main .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+@media (max-width:880px){main .wrap{grid-template-columns:1fr}main{padding-block:36px 48px}}
+.pronto{display:inline-block;background:var(--oil-soft);color:var(--oil);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:99px}
+.lead{font-size:clamp(18px,2vw,20px);color:var(--muted);max-width:52ch}
+ul.hace{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
+ul.hace li{display:flex;gap:12px;align-items:flex-start}
+ul.hace li::before{content:"";flex:none;width:22px;height:22px;margin-top:2px;border-radius:50%;background:var(--olive-soft);box-shadow:inset 0 0 0 6px var(--olive-soft),inset 0 0 0 22px var(--olive)}
+.contacto{margin-top:32px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:grid;gap:6px;max-width:520px}
+.contacto b{font-size:18px}
+.contacto a{color:var(--olive);font-weight:700;font-size:19px;text-decoration:none;word-break:break-all}
+.contacto a:hover{text-decoration:underline}
+a:focus-visible{outline:3px solid var(--oil);outline-offset:3px;border-radius:4px}
+
+/* el móvil con la app */
+.phone{justify-self:center;width:min(310px,100%);background:#11140B;border-radius:40px;padding:11px;box-shadow:0 30px 60px -22px rgba(30,40,10,.5)}
+.screen{background:#F3F2EA;border-radius:30px;overflow:hidden;color:#22261A;font-size:13px}
+.app-h{background:#3B4B1E;color:#F4F3E8;padding:18px 16px 14px}
+.app-h b{font-family:var(--f-display);font-weight:400;font-size:18px}
+.app-h small{display:block;opacity:.75;margin-top:2px}
+.app-b{padding:12px;display:grid;gap:10px}
+.semaf{background:#F6EDD2;border:1px solid #DEDCCD;border-left:6px solid #9A7414;border-radius:10px;padding:9px 12px}
+.semaf .l{font-weight:700;font-size:12px}
+.semaf .v{font-size:23px;font-weight:800;font-variant-numeric:tabular-nums}
+.semaf .s{font-size:11px;color:#62674F}
+.apuntar{background:#4E6427;color:#fff;border-radius:10px;padding:11px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px}
+.apuntar i{width:22px;height:22px;border-radius:50%;background:#fff;color:#3B4B1E;font-style:normal;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:18px}
+.kp{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kp div{background:#fff;border:1px solid #DEDCCD;border-radius:10px;padding:8px 10px}
+.kp span{display:block;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#62674F;font-weight:700}
+.kp b{font-size:16px;font-variant-numeric:tabular-nums}
+.tabs{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid #DEDCCD;background:#fff;font-size:9.5px;color:#62674F;text-align:center}
+.tabs span{padding:8px 0 10px}
+.tabs .on{color:#22261A;font-weight:700;box-shadow:inset 0 3px 0 #4E6427}
+
+footer{border-top:1px solid var(--line);font-size:14px;color:var(--muted);padding-bottom:env(safe-area-inset-bottom,0px)}
+footer .wrap{padding-block:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#F4F3E8" opacity=".12"/><path d="M11 37C19 29 28 20 38 10" stroke="#F4F3E8" stroke-width="2.2" fill="none" stroke-linecap="round"/><ellipse cx="21" cy="21.5" rx="7.6" ry="3.1" transform="rotate(-42 21 21.5)" fill="#A5B862"/><ellipse cx="30.5" cy="24.5" rx="7" ry="2.9" transform="rotate(-8 30.5 24.5)" fill="#A5B862"/><ellipse cx="27" cy="13" rx="6" ry="2.5" transform="rotate(-68 27 13)" fill="#A5B862"/><ellipse cx="17" cy="31.5" rx="4.2" ry="5.2" fill="#22300F" stroke="#F4F3E8" stroke-width="1.3"/></svg>
+    Cuaderno del Olivar
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div>
+      <span class="pronto">Muy pronto</span>
+      <h1>Tu campaña de aceituna, <em>cuadrada en el móvil</em></h1>
+      <p class="lead">Estamos terminando una app pensada para olivareros que entregan su aceituna en cooperativa o almazara. Apuntas lo de cada albarán y la app hace todas las cuentas.</p>
+      <ul class="hace">
+        <li>Entregas de aceituna con sus kilos y rendimiento, y el aceite que te corresponde.</li>
+        <li>Anticipos, liquidación final y pagos de la PAC, con lo que te falta por cobrar.</li>
+        <li>Facturas y jornales de tus trabajadores, finca a finca.</li>
+        <li>Un Excel para tu gestoría con un solo toque.</li>
+      </ul>
+      <div class="contacto">
+        <b>¿Quieres probarla antes que nadie?</b>
+        <p>Escríbenos y te avisamos en cuanto esté lista:</p>
+        <a href="mailto:hola@cuadernodelolivar.es">hola@cuadernodelolivar.es</a>
+      </div>
+    </div>
+
+    <div class="phone" role="img" aria-label="Así se ve la app: resumen de una campaña de ejemplo">
+      <div class="screen">
+        <div class="app-h"><b>Cuaderno del Olivar</b><small>Campaña 2025/2026 · ejemplo</small></div>
+        <div class="app-b">
+          <div class="semaf">
+            <div class="l">⏳ Campaña en curso</div>
+            <div class="v">16.135,00 €</div>
+            <div class="s">Si pagan 4,10 €/kg de aceite terminarías con 30.820 €</div>
+          </div>
+          <div class="apuntar"><i>+</i>Apuntar algo nuevo</div>
+          <div class="kp">
+            <div><span>Aceituna</span><b>45.854 kg</b></div>
+            <div><span>Aceite</span><b>8.704 kg</b></div>
+            <div><span>Ingresos</span><b>24.040 €</b></div>
+            <div><span>Gastos</span><b>7.905 €</b></div>
+          </div>
+        </div>
+        <div class="tabs"><span class="on">Resumen</span><span>Entregas</span><span>Ingresos</span><span>Gastos</span><span>Campo</span><span>Más</span></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Cuaderno del Olivar · Hecho en Jaén, entre olivos</div>
+</footer>
+</body>
+</html>
